@@ -12,6 +12,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Krona+One"
 	rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/WEB-INF/lib/index.css">
 </head>
 <body>
@@ -33,10 +34,11 @@
     </form>
   </div>
 </nav> -->
-
+<div class="container"><div class="row justify-content-center"><div class="col-8" id="data">
 	<input type="text" id="usertext">
-	<button onClick="getData()">CLICK ME</button>
+	<button type="button" class="btn btn-primary" onClick="getData()">CLICK ME</button>
 	<p id="jsondata"></p>
+	</div></div></div>
 	<!-- <p id="jsondata1"></p>
 	<p id="jsondata2"></p>
 	<p id="jsondata3"></p> -->

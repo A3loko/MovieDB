@@ -10,17 +10,16 @@ function getData() {
 			var dataObj = myArr;
 			var i = 0;
 			for (i = 0; i < dataObj.results.length; i++) {
-				var html_code = "<div class = \"data\">Title = "
+				var html_code = "<img src=\"https://image.tmdb.org/t/p/w300_and_h450_bestv2/"+dataObj.results[i].poster_path+"\"<br><br>Title = "
 						+ dataObj.results[i].title + "<br> Ratings ="
 						+ dataObj.results[i].vote_average
 						+ "<br> Release Date ="
 						+ dataObj.results[i].release_date + "<br> Overviews ="
 						+ dataObj.results[i].overview
-						+ "<br><button onClick=\"Favourite("
+						+ "<br><button id =\"button"+i+"\" onClick=\"Favourite("
 						+ dataObj.results[i].id
-						+ ")\">Add to favourite</button></div>";
-				document.getElementById('jsondata').insertAdjacentHTML(
-						'afterend', html_code);
+						+ ")\">Add to favourite</button><br><br><br></div></div></div>";
+				document.getElementById('jsondata').insertAdjacentHTML('afterend', html_code);
 			}
 		}
 	}
