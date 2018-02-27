@@ -1,35 +1,41 @@
-/*var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;	
-	  var xhr = new XMLHttpRequest();
-	  var xmlHttp = new XMLHttpRequest();
-	  var url = "https://api.themoviedb.org/3/discover/movie?primary_release_date.gte=2016-04-30&certification_country=IN&certification.lte=A&language=hi?&api_key=45380d526f98549e83babfdca328fd84&page=2&limit=%22%20+%20limit";
-	  xmlHttp.open("GET", url, true);
-	  xmlHttp.send();
-	  
-	  var name = document.getElementByID("name");
-	  console.log(name);
-	  
-	  xmlHttp.onreadystatechange = function() { 
-	      if(this.readyState == 4 && this.status == 200){
-	        var obj = JSON.parse(this.responseText);
-	       console.log(obj); 
-	    }
-	 }
-	  */
-function getData(){
-	
-	  var name = document.getElementById("mySearch").value;
-	  
-	  /*var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-	  var xhr = new XMLHttpRequest();*/
-	  var xmlHttp = new XMLHttpRequest();
-	  var url = "https://api.themoviedb.org/3/search/movie?api_key=45380d526f98549e83babfdca328fd84&query="+name;
-	  xmlHttp.open("GET", url, true);
-	  xmlHttp.send();
-	  alert(url)
-	  xmlHttp.onreadystatechange = function() { 	
-	      if(this.readyState == 4 && this.status == 200){
-	        var obj = JSON.parse(this.responseText);
-	    }
-	  }
-	  document.write(obj);
+function getData() {
+	var xmlHttp = new XMLHttpRequest();
+	var word = document.getElementById("usertext").value;
+
+	var url = "https://api.themoviedb.org/3/search/movie?api_key=45380d526f98549e83babfdca328fd84&query="
+			+ word;
+	xmlHttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var myArr = JSON.parse(this.responseText);
+			var dataObj = myArr;
+			var i = 0;
+			for (i = 0; i < dataObj.results.length; i++) {
+				var html_code = "<div class = \"data\">Title = "
+						+ dataObj.results[i].title + "<br> Ratings ="
+						+ dataObj.results[i].vote_average
+						+ "<br> Release Date ="
+						+ dataObj.results[i].release_date + "<br> Overviews ="
+						+ dataObj.results[i].overview
+						+ "<br><button onClick=\"Favourite("
+						+ dataObj.results[i].id
+						+ ")\">Add to favourite</button></div>";
+				document.getElementById('jsondata').insertAdjacentHTML(
+						'afterend', html_code);
+			}
+		}
+	}
+	xmlHttp.open("GET", url, true);
+	xmlHttp.send();
+}
+
+var i = 0;
+function Favourite(id) {
+	var favs = new Arary();
+	alert(favs[i]);
+	if (i < 3) {
+		favs[i] = id;
+	} else {
+
+	}
+	i++;
 }
