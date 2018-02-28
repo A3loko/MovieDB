@@ -9,14 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  <servlet-name>save</servlet-name>
-  <servlet-class>Main.saveData</servlet-class>
+    <servlet-name>save</servlet-name>
+    <servlet-class>Main.saveData</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>save</servlet-name>
-  <url-pattern></url-pattern>
+    <servlet-name>save</servlet-name>
+    <url-pattern>/MainDB</url-pattern>
   </servlet-mapping>
 </web-app>
-
