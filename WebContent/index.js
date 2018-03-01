@@ -29,8 +29,8 @@ function getData() {
 }
 
 
-/*function callServletWithAjax(i){
-	//alert(i);
+function callServletWithAjax(i){
+	alert(i);
 	index=i;
 	alert(dataObj.results[index].title);
 	var xmlhttp = new XMLHttpRequest();
@@ -45,7 +45,7 @@ function getData() {
 	console.log(params);
 	xmlhttp.open('GET',"http://localhost:8081/MovieDB/saveData?"+params, true);
 	xmlhttp.send();
-}*/
+}
 
 function ReadFavs(){
 	var xmlhttp = new XMLHttpRequest();

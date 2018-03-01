@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 @WebServlet("/saveData")
 public class saveData extends HttpServlet {
@@ -33,20 +32,14 @@ public class saveData extends HttpServlet {
         String overview = request.getParameter("overview");
         
         JSONObject json = new JSONObject();
-        try {
             json.put("title", title);
             json.put("rating", rating);
             json.put("release_date", release_date);
             json.put("overview", overview);
-            
-        } catch (JSONException e) {
-            System.out.println("Wrong element inserted");
-        }
+                    
         
-        
-        
-        if(jarray.length() < 10) {
-            jarray.put(json);
+        if(jarray.size() < 10) {
+            jarray.add(json);
         }
         else {
             System.out.println("You have exceeded your limit");
