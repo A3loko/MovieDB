@@ -1,9 +1,6 @@
 package Main;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Iterator;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,17 +33,20 @@ public class readFavs extends HttpServlet {
 		JSONArray arr = new JSONArray();
 		FileReader reader = new FileReader("/home/sapient/Documents/favorites.json");
 		try {
-			arr = (JSONArray) parser.parse(reader);
-			for(int i = 0; i < arr.size(); i++) {
-				obj = (JSONObject)arr.get(i);
-				String title = (String)obj.get("title");
-				String relDate = (String)obj.get("release_date");
-				String overview = (String)obj.get("overview");
-				out.print("<table style=\"width:100%\"><tr><th>Title</th><th>Release Date</th><th>Overview</th></tr><tr><td>"+title+"</td><td>"+relDate+"</td><td>"+overview+"</td></tr>");
+			if(arr.size() == 0)
+				out.print("Favourite list is empty!");
+			else {
+				String s;
+				for(int i=0;i<arr.size();i++) {
+					obj=(JSONObject) arr.get(i);
+					s = (String)obj.get("city");
+					// sending the index of the object to be deleted	
+					out.println((i+1)+"."+s+"<button type = \"button\" onclick = \"removeFav("+i+")\" id = \"remove_button\" class = \"btn btn-outline-danger\">Remove</button><br>");
+	    	}
 			}
 		} catch (ParseException e) {
-			e.printStackTrace();
-		} 
+				System.out.println("Please enter a valid path");
+}
 	} 
 
 	

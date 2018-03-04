@@ -59,3 +59,15 @@ function ReadFavs(){
 	xmlhttp.open('GET',"http://localhost:8081/MovieDB/readFavs", true);
 	xmlhttp.send();
 }
+
+function removeFav(i){
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("favorites").innerHTML = xmlhttp.responseText;
+		}
+	};
+	//passing the value of the index
+	xmlhttp.open('POST', "http://localhost:8081/MovieDB/deletejson?value="+i, true);
+xmlhttp.send();
